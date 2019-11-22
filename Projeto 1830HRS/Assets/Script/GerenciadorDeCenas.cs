@@ -7,7 +7,7 @@ public class GerenciadorDeCenas : MonoBehaviour
 {
    void mudarCena(string nomeDaCena)
     {
-        Scene.LoadScene(nomeDaCena); 
+        SceneManagement.LoadScene(nomeDaCena); 
     }
     
 }
