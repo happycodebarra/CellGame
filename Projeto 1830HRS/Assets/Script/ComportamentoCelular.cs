@@ -6,9 +6,11 @@ public class ComportamentoCelular : MonoBehaviour
 {
     public GameObject celula;
 
-    public GameObject nucleoQRCode;
+    // QR Code Objects
+    public GameObject nucleoQRCode, mitocondriaQRCode, lisossomoQRCode, reticuloQRCode;
 
-    public GameObject nucleoCelula;
+    // Objetos na celula
+    public GameObject nucleo, mitocondria, lisossomo, reticulo;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +21,34 @@ public class ComportamentoCelular : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(celula.transform.position, nucleoQRCode.transform.position) < 1.5)
+        var distanciaCelulaNucleo = Vector3.Distance(celula.transform.position, nucleoQRCode.transform.position);
+        var distanciaCelulaMitocondrias = Vector3.Distance(celula.transform.position, mitocondriaQRCode.transform.position);
+        var distanciaCelularLisossomo = Vector3.Distance(celula.transform.position, lisossomoQRCode.transform.position);
+        var distanciaCelularReticulo = Vector3.Distance(celula.transform.position, reticuloQRCode.transform.position);
+
+
+        if (distanciaCelulaNucleo < 1.5)
         {
-            nucleoCelula.SetActive(true); 
+            nucleo.SetActive(true); 
             nucleoQRCode.SetActive(false);
+        }
+
+        else if (distanciaCelulaMitocondrias < 1.5)
+        {
+            mitocondria.SetActive(true);
+            mitocondriaQRCode.SetActive(false);
+        }
+
+        else if (distanciaCelularLisossomo < 1.5)
+        {
+            lisossomo.SetActive(true);
+            lisossomoQRCode.SetActive(false);
+        }
+
+        else if (distanciaCelularReticulo < 1.5)
+        {
+            reticulo.SetActive(true);
+            reticulo.SetActive(false);
         }
     }
 }
